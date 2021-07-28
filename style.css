@@ -1,0 +1,24 @@
+body{
+    color: rebeccapurple;
+}
+
+.done{
+    text-decoration: line-through;
+}
+
+#add-task-button{
+    border-radius: 0.4rem;
+    border: antiquewhite solid 0.1px;
+}
+
+input[type="checkbox"]{
+    color: chartreuse;
+    border-radius: 0.2rem;
+}
+span{
+    color: black;
+}
+
+#delete-btn{
+    color: red;
+}
