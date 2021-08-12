@@ -124,11 +124,10 @@ function createTask(task){
 
     //adding what will happen when delete button will be clicked
     deleteButton.addEventListener('click', function(e) {
-        taskList.parentNode.removeChild(taskList);                 //this removes task from the webpage and not local storage
-
-        let getItem = localStorage.getItem("tasks");          //all items stored under the key: "tasks" in local storage will be assigned to getItem
-        let allItems = JSON.parse(getItem);                       //It retrieves the items from getItems by converting it back to its original dataType from string
-        let delete_me = this.getAttribute("data-key"); //assigning items with "data-key" attribute to delete_me
+        taskList.parentNode.removeChild(taskList);
+        let getItem = localStorage.getItem("tasks");
+        let allItems = JSON.parse(getItem);
+        let delete_me = this.getAttribute("data-key");
         console.log(delete_me);
 
         let updatedArray = [];      //this array will store the tasks that are not deleted
