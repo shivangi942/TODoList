@@ -5,25 +5,6 @@ const addTask = document.querySelector("#add-task-button");
 //document.addEventListener('DomContentLoaded', getSavedTasks)
     addTask.addEventListener("click", addTaskHandler);
 
-
-
-
-const inputCheckbox = document.querySelectorAll('input[type="checkbox"]');
-const completeTask = document.querySelectorAll(".task");
-
-    for (let i = 0; i < inputCheckbox.length; i++){
-        inputCheckbox[i].addEventListener("change", function (){
-            if (this.checked){
-                completeTask[i].classList.toggle("done");
-            } else {
-                completeTask[i].classList.toggle("done");
-            }
-        })
-    }
-
-
-
-
 let dataList = [];
 
     function addTaskHandler(){
@@ -44,11 +25,12 @@ let dataList = [];
         taskName.innerHTML = inputTask.value;
         taskName.className += "task";
         taskList.appendChild(taskName);
+        inputTask.value="";
 
         //creating an object to push it to array dataList
         let newTask = {
             id,
-            text: taskName.innerHTML
+            text: taskName.innerHTML,
         }
         //pushing the object to dataList
         dataList.push(newTask);
@@ -90,6 +72,10 @@ let dataList = [];
         //Adding the functionality to checkbox
         inputBox.addEventListener("click", function (){
             taskName.classList.toggle("done");
+            if(taskName.classList.contains("done")){
+                localStorage.setItem("checked tab",JSON.stringify(inputBox.checked));
+                console.log("it's checked");
+            }
         })
 
     }
@@ -113,7 +99,6 @@ function renderDom(){
 renderDom();
 
 function createTask(task){
-
      //creating li tag
     let taskList = document.createElement("li");
     taskList.setAttribute("data-key", task.id);
@@ -126,7 +111,7 @@ function createTask(task){
 
     //creating span to keep task name
     let  taskName = document.createElement("span");
-    taskName.innerHTML = task.value;
+    taskName.innerHTML = task.text; //gets the text from task
     taskName.className += "task";
     taskList.appendChild(taskName);
 
